@@ -1,0 +1,26 @@
+{
+  "name": "skel-nav-esri",
+  "version": "0.1.0",
+  "homepage": "https://github.com/cmichaelgraham/skel-nav-esri",
+  "authors": [
+    "Mike Graham <mgraham@technicalmedia.com>"
+  ],
+  "description": "Aurelia skeleton-navigation with loader and bootstrapper for dojo/esri",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "aurelia",
+    "esri",
+    "dojo"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
