@@ -1,6 +1,0 @@
-C:\aurelia\skel-nav-esri\skel-nav-esri\bin\skel-nav-esri.dll.config
-C:\aurelia\skel-nav-esri\skel-nav-esri\bin\skel-nav-esri.dll
-C:\aurelia\skel-nav-esri\skel-nav-esri\bin\skel-nav-esri.pdb
-C:\aurelia\skel-nav-esri\skel-nav-esri\obj\Debug\skel-nav-esri.csprojResolveAssemblyReference.cache
-C:\aurelia\skel-nav-esri\skel-nav-esri\obj\Debug\skel-nav-esri.dll
-C:\aurelia\skel-nav-esri\skel-nav-esri\obj\Debug\skel-nav-esri.pdb
