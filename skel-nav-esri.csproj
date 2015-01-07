@@ -25,6 +25,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="typings\aurelia\aurelia.d.ts" />
+    <TypeScriptCompile Include="typings\dojo\dojo.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower.json" />
