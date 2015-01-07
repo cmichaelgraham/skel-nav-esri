@@ -35,5 +35,6 @@
     "aurelia-templating-binding": "aurelia/templating-binding#~0.5.0",
     "aurelia-templating-router": "aurelia/templating-router#~0.6.0",
     "aurelia-templating-resources": "aurelia/templating-resources#~0.5.0"
+    "q": "kriskowal/q#~2.0.2"
   }
 }
