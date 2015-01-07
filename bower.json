@@ -22,5 +22,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "aurelia-dependency-injection": "aurelia/dependency-injection#~0.2.1"
+  }
 }
