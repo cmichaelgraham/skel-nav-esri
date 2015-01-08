@@ -2,7 +2,7 @@ define(["require", "exports", "aurelia-dependency-injection"], function (require
     function run() {
         // alert("boot !! :)");
         var x = new audi.Singleton();
-        alert("audi: " + JSON.stringify(x));
+        alert("Promise exists: " + Promise !== undefined);
     }
     exports.run = run;
 });

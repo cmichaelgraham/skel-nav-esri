@@ -27,6 +27,7 @@
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="bootstrapper-amd\index.ts" />
     <TypeScriptCompile Include="typings\aurelia\aurelia.d.ts" />
+    <TypeScriptCompile Include="typings\core-js\core-js.d.ts" />
     <TypeScriptCompile Include="typings\dojo\dojo.d.ts" />
   </ItemGroup>
   <ItemGroup>
