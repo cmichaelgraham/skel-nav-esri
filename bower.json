@@ -29,7 +29,7 @@
     "aurelia-framework": "aurelia/framework#~0.5.0",
     "aurelia-history-browser": "aurelia/history-browser#~0.2.0",
     "aurelia-history": "aurelia/history#~0.2.0",
-    "aurelia-loader-systemjs": "aurelia/loader-systemjs#~0.3.1",
+    "aurelia-loader": "aurelia/loader#~0.3.0",
     "aurelia-logging-console": "aurelia/logging-console#~0.2.0",
     "aurelia-router": "aurelia/router#~0.3.0",
     "aurelia-templating-binding": "aurelia/templating-binding#~0.5.0",

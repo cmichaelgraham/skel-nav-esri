@@ -12,6 +12,7 @@ bower_components
 
 # User-specific files
 *.suo
+*.vs12.suo
 *.user
 *.sln.docstates
 

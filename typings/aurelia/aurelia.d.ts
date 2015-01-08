@@ -3,7 +3,7 @@
 }
 
 
-declare module "dependency-injection" {
+declare module "aurelia-dependency-injection" {
     interface HandlerCallback {
         (container: Container): void;
     }
