@@ -2,6 +2,11 @@
     new (...args): T;
 }
 
+declare module "aurelia-logging-console" {
+    class ConsoleAppender {}
+}
+
+declare module "loader-amd" {}
 
 declare module "aurelia-dependency-injection" {
     interface HandlerCallback {
@@ -63,4 +68,21 @@ declare module "aurelia-framework" {
     class Property {
         constructor(propertyName: string);
     }
+
+    class Aurelia {}
+    class LogManager {
+        static getLogger: (id: string) => Logger;
+    }
+
+    class Logger {}
+
+    class ConsoleAppender { }
+}
+
+declare module "aurelia-logging" {
+    class LogManager {
+        static getLogger: (id: string) => Logger;
+    }
+
+    class Logger { }
 }
