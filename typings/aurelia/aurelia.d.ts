@@ -3,10 +3,10 @@
 }
 
 declare module "aurelia-logging-console" {
-    class ConsoleAppender {}
+    class ConsoleAppender { }
 }
 
-declare module "loader-amd" {}
+declare module "loader-amd" { }
 
 declare module "aurelia-dependency-injection" {
     interface HandlerCallback {
@@ -69,20 +69,45 @@ declare module "aurelia-framework" {
         constructor(propertyName: string);
     }
 
-    class Aurelia {}
-    class LogManager {
-        static getLogger: (id: string) => Logger;
+    class Aurelia { }
+
+    module LogManager {
+        function getLogger(id: string): Logger;
+        enum levels {
+            none = 0,
+            error = 1,
+            warn = 2,
+            info = 3,
+            debug = 4
+        }
+        function setLevel(level: levels): void;
+        function addAppender(appender: AuAppender): void;
     }
 
-    class Logger {}
+    class Logger { }
 
-    class ConsoleAppender { }
+    interface AuAppender {}
+
+    class ConsoleAppender implements AuAppender {}
 }
 
 declare module "aurelia-logging" {
-    class LogManager {
-        static getLogger: (id: string) => Logger;
+    module LogManager {
+        function getLogger(id: string): Logger;
+        enum levels {
+            none = 0,
+            error = 1,
+            warn = 2,
+            info = 3,
+            debug = 4
+        }
+        function setLevel(level: levels): void;
+        function addAppender(appender: Appender): void;
     }
+
+    interface Appender { }
+
+    class ConsoleAppender implements Appender { }
 
     class Logger { }
 }

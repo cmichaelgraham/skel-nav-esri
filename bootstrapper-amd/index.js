@@ -121,7 +121,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             var mainHost = doc.querySelectorAll("[aurelia-main]"), appHost = doc.querySelectorAll("[aurelia-app]"), i, ii;
             if (appHost.length && !mainHost.length && runningLocally()) {
                 auf.LogManager.addAppender(new auf.ConsoleAppender());
-                auf.LogManager.setLevel(auf.LogManager.levels.debug);
+                auf.LogManager.setLevel(4 /* debug */);
             }
             return loadPolyfills().then(function () {
                 for (i = 0, ii = mainHost.length; i < ii; ++i) {

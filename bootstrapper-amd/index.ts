@@ -8,7 +8,7 @@ import aulc = require("aurelia-logging-console")
 
 var logger = auf.LogManager.getLogger("bootstrapper");
 
-function ready(global) {
+function ready(global: Window) {
     return new Promise((resolve, reject) => {
         function completed() {
             global.document.removeEventListener("DOMContentLoaded", completed, false);
@@ -137,7 +137,7 @@ function handleApp(appHost) {
 
         return aurelia.start().then(a => { return a.setRoot(appModuleId, appHost); });
     }).catch(e => {
-            setTimeout(function () { throw e; }, 0);
+            setTimeout(() => { throw e; }, 0);
         });
 }
 
@@ -147,7 +147,7 @@ function runningLocally() {
 }
 
 function run() {
-    return ready(window).then(doc => {
+    return ready(window).then((doc: Document) => {
         var mainHost = doc.querySelectorAll("[aurelia-main]"),
             appHost = doc.querySelectorAll("[aurelia-app]"),
             i, ii;
@@ -159,11 +159,11 @@ function run() {
 
         return loadPolyfills().then(() => {
             for (i = 0, ii = mainHost.length; i < ii; ++i) {
-                handleMain(mainHost[i]);
+                handleMain(<HTMLElement>mainHost[i]);
             }
 
             for (i = 0, ii = appHost.length; i < ii; ++i) {
-                handleApp(appHost[i]);
+                handleApp(<HTMLElement>appHost[i]);
             }
         });
     });
