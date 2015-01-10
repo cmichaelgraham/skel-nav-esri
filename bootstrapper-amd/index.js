@@ -1,5 +1,4 @@
-define(["require", "exports", "aurelia-framework"], function (require, exports, auf) {
-    // import { ConsoleAppender } from 'aurelia-logging-console';
+define(["require", "exports", "loader-amd", "aurelia-framework"], function (require, exports, lamd, auf) {
     var logger = auf.LogManager.getLogger("bootstrapper");
     function ready(global) {
         return new Promise(function (resolve, reject) {
@@ -18,52 +17,44 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         });
     }
     function loadPolyfills() {
-        return System.normalize('aurelia-bootstrapper').then(function (bootstrapperName) {
-            return System.normalize('aurelia-framework', bootstrapperName).then(function (frameworkName) {
-                System.map['aurelia-framework'] = frameworkName;
-                return System.normalize('aurelia-loader', frameworkName).then(function (loaderName) {
-                    var toLoad = [];
-                    logger.debug('loading core-js');
-                    toLoad.push(System.normalize('core-js', loaderName).then(function (name) {
-                        return System.import(name);
-                    }));
-                    toLoad.push(System.normalize('aurelia-depedency-injection', frameworkName).then(function (name) {
-                        System.map['aurelia-depedency-injection'] = name;
-                    }));
-                    toLoad.push(System.normalize('aurelia-router', bootstrapperName).then(function (name) {
-                        System.map['aurelia-router'] = name;
-                    }));
-                    toLoad.push(System.normalize('aurelia-logging-console', bootstrapperName).then(function (name) {
-                        System.map['aurelia-logging-console'] = name;
-                    }));
-                    if (!('import' in document.createElement('link'))) {
-                        logger.debug('loading the HTMLImports polyfill');
-                        toLoad.push(System.normalize('webcomponentsjs/HTMLImports.min', loaderName).then(function (name) {
-                            return System.import(name);
-                        }));
-                    }
-                    if (!("content" in document.createElement("template"))) {
-                        logger.debug('loading the HTMLTemplateElement polyfill');
-                        toLoad.push(System.normalize('aurelia-html-template-element', loaderName).then(function (name) {
-                            return System.import(name);
-                        }));
-                    }
-                    return Promise.all(toLoad);
-                });
+        return lamd.System.normalize('aurelia-bootstrapper').then(function (bootstrapperName) { return lamd.System.normalize('aurelia-framework', bootstrapperName).then(function (frameworkName) {
+            lamd.System.map['aurelia-framework'] = frameworkName;
+            return lamd.System.normalize('aurelia-loader', frameworkName).then(function (loaderName) {
+                var toLoad = [];
+                logger.debug('loading core-js');
+                toLoad.push(lamd.System.normalize('core-js', loaderName).then(function (name) { return lamd.System.importModule(name); }));
+                toLoad.push(lamd.System.normalize('aurelia-depedency-injection', frameworkName).then(function (name) {
+                    lamd.System.map['aurelia-depedency-injection'] = name;
+                }));
+                toLoad.push(lamd.System.normalize('aurelia-router', bootstrapperName).then(function (name) {
+                    lamd.System.map['aurelia-router'] = name;
+                }));
+                toLoad.push(lamd.System.normalize('aurelia-logging-console', bootstrapperName).then(function (name) {
+                    lamd.System.map['aurelia-logging-console'] = name;
+                }));
+                if (!('import' in document.createElement('link'))) {
+                    logger.debug('loading the HTMLImports polyfill');
+                    toLoad.push(lamd.System.normalize('webcomponentsjs/HTMLImports.min', loaderName).then(function (name) { return lamd.System.importModule(name); }));
+                }
+                if (!("content" in document.createElement("template"))) {
+                    logger.debug('loading the HTMLTemplateElement polyfill');
+                    toLoad.push(lamd.System.normalize('aurelia-html-template-element', loaderName).then(function (name) { return lamd.System.importModule(name); }));
+                }
+                return Promise.all(toLoad);
             });
-        });
+        }); });
     }
     function configureAurelia(aurelia) {
-        return System.normalize('aurelia-bootstrapper').then(function (bName) {
+        return lamd.System.normalize('aurelia-bootstrapper').then(function (bName) {
             var toLoad = [];
-            toLoad.push(System.normalize('aurelia-templating-binding', bName).then(function (templatingBinding) {
+            toLoad.push(lamd.System.normalize('aurelia-templating-binding', bName).then(function (templatingBinding) {
                 aurelia.plugins.installBindingLanguage = function () {
                     aurelia.plugins.install(templatingBinding);
                     return this;
                 };
             }));
-            toLoad.push(System.normalize('aurelia-history-browser', bName).then(function (historyBrowser) {
-                return System.normalize('aurelia-templating-router', bName).then(function (templatingRouter) {
+            toLoad.push(lamd.System.normalize('aurelia-history-browser', bName).then(function (historyBrowser) {
+                return lamd.System.normalize('aurelia-templating-router', bName).then(function (templatingRouter) {
                     aurelia.plugins.installRouter = function () {
                         aurelia.plugins.install(historyBrowser);
                         aurelia.plugins.install(templatingRouter);
@@ -71,14 +62,14 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
                     };
                 });
             }));
-            toLoad.push(System.normalize('aurelia-templating-resources', bName).then(function (name) {
+            toLoad.push(lamd.System.normalize('aurelia-templating-resources', bName).then(function (name) {
                 aurelia.plugins.installResources = function () {
                     aurelia.plugins.install(name);
                     return this;
                 };
             }));
-            toLoad.push(System.normalize('aurelia-event-aggregator', bName).then(function (eventAggregator) {
-                System.map['aurelia-event-aggregator'] = eventAggregator;
+            toLoad.push(lamd.System.normalize('aurelia-event-aggregator', bName).then(function (eventAggregator) {
+                lamd.System.map['aurelia-event-aggregator'] = eventAggregator;
                 aurelia.plugins.installEventAggregator = function () {
                     aurelia.plugins.install(eventAggregator);
                     return this;
@@ -88,7 +79,7 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
         });
     }
     function handleMain(mainHost) {
-        var mainModuleId = mainHost.getAttribute('aurelia-main') || 'main', loader = new SystemJSLoader();
+        var mainModuleId = mainHost.getAttribute('aurelia-main') || 'main', loader = new lamd.LoaderAmd();
         return loader.loadModule(mainModuleId).then(function (m) {
             var aurelia = new auf.Aurelia(loader);
             return configureAurelia(aurelia).then(function () {

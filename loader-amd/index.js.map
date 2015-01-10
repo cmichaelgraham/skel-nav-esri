@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["index.ts"],"names":[],"mappings":";IACsD"}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["index.ts"],"names":["System","System.constructor","System.normalize"],"mappings":";IAGA,IAAa,MAAM;QAAnBA,SAAaA,MAAMA;QAOnBC,CAACA;QANGD,0BAASA,GAATA,UAAUA,QAAgBA;YACtBE,IAAIA,OAAOA,GAAGA,IAAIA,OAAOA,CAASA,UAACA,OAAOA,EAAEA,MAAMA;gBAC9CA,OAAOA,CAACA,QAAQA,CAACA,CAACA;YACtBA,CAACA,CAACA,CAACA;YACHA,MAAMA,CAACA,OAAOA,CAACA;QACnBA,CAACA;QACLF,aAACA;IAADA,CAACA,AAPD,IAOC;IAPY,cAAM,GAAN,MAOZ,CAAA"}

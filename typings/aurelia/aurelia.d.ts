@@ -69,7 +69,19 @@ declare module "aurelia-framework" {
         constructor(propertyName: string);
     }
 
-    class Aurelia { }
+    interface Loader { }
+    interface AureliaPlugins {
+        installBindingLanguage: () => AureliaPlugins;
+        installResources: () => AureliaPlugins;
+        installRouter: () => AureliaPlugins;
+        installEventAggregator: () => AureliaPlugins;
+    }
+    class Aurelia {
+        constructor(loader?: Loader);
+        plugins: AureliaPlugins;
+        start(): Promise<Aurelia>;
+        setRoot(appModuleId: string, appHost: any): any;
+    }
 
     module LogManager {
         function getLogger(id: string): Logger;
@@ -84,11 +96,13 @@ declare module "aurelia-framework" {
         function addAppender(appender: AuAppender): void;
     }
 
-    class Logger { }
+    class Logger {
+        debug(message: string): void;
+    }
 
-    interface AuAppender {}
+    interface AuAppender { }
 
-    class ConsoleAppender implements AuAppender {}
+    class ConsoleAppender implements AuAppender { }
 }
 
 declare module "aurelia-logging" {
