@@ -117,7 +117,7 @@ function handleMain(mainHost) {
 
     return loader.loadModule(mainModuleId)
         .then(m => {
-            var aurelia = new Aurelia(loader);
+            var aurelia = new auf.Aurelia(loader);
             return configureAurelia(aurelia).then(() => { return m.configure(aurelia); });
         }).catch(e => {
             setTimeout(function () { throw e; }, 0);
@@ -126,7 +126,7 @@ function handleMain(mainHost) {
 
 function handleApp(appHost) {
     var appModuleId = appHost.getAttribute('aurelia-app') || 'app',
-        aurelia = new Aurelia();
+        aurelia = new auf.Aurelia();
 
     return configureAurelia(aurelia).then(() => {
         aurelia.plugins

@@ -30,6 +30,7 @@
     <TypeScriptCompile Include="typings\aurelia\aurelia.d.ts" />
     <TypeScriptCompile Include="typings\core-js\core-js.d.ts" />
     <TypeScriptCompile Include="typings\dojo\dojo.d.ts" />
+    <TypeScriptCompile Include="typings\es6-promise\es6-promise.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower.json" />
