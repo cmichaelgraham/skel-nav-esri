@@ -6,93 +6,88 @@
     <title>TypeScript HTML App</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
     <link rel="stylesheet" href="http://js.arcgis.com/3.12/esri/css/esri.css">
-</head>
-<body>
+
     <script type="text/javascript">
-    var pathdir = '';
-    var basepathdir = '';
-    var arr = window.location.pathname.split('/');
+        var pathdir = '';
+        var basepathdir = '';
+        var arr = window.location.pathname.split('/');
 
-    // get url path to folder
-    arr.pop();
-    arr.forEach(function (value) {
-        if (value) {
-            pathdir += "/" + value;
+        // get url path to folder
+        arr.pop();
+        arr.forEach(function (value) {
+            if (value) {
+                pathdir += "/" + value;
+            }
+        });
+
+        // get path to folder above folder
+        arr.pop();
+        arr.forEach(function (value) {
+            if (value) {
+                basepathdir += "/" + value;
+            }
+        });
+
+        if (basepathdir.length < 1) {
+            basepathdir = "http://localhost";
+            pathdir = basepathdir + pathdir;
         }
-    });
 
-    // get path to folder above folder
-    arr.pop();
-    arr.forEach(function (value) {
-        if (value) {
-            basepathdir += "/" + value;
-        }
-    });
+        var package_path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+        package_path = window.location.href;
 
-    if (basepathdir.length < 1) {
-        basepathdir = "http://localhost";
-        pathdir = basepathdir + pathdir;
-    }
+        var dojoConfig = {
+            async: true,
 
-    var package_path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+            // If you have dijits that appear in your page when the application loads,
+            // you should include this line (parseOnLoad: true) before adding the script tag
+            // that references the ArcGIS JavaScript API
+            parseOnLoad: true,
 
-    var dojoConfig = {
-        async: true,
+            paths: { pwcommon: location.pathname.replace(/\/[^/]+$/, "") + "/pwcommon" },
 
-        // If you have dijits that appear in your page when the application loads,
-        // you should include this line (parseOnLoad: true) before adding the script tag
-        // that references the ArcGIS JavaScript API
-        parseOnLoad: true,
+            // The locationPath logic below may look confusing but all its doing is
+            // enabling us to load the api from a CDN and load local modules from the correct location.
+            packages: [
+                { name: "main", location: package_path + "/", main: "main" },
+                { name: "bootstrapper-amd", location: package_path + "/" + "bootstrapper-amd", main: "index" },
+                { name: "loader-amd", location: package_path + "/" + "loader-amd", main: "index" },
+                { name: "aurelia-binding", location: package_path + "/bower_components/aurelia-binding/dist/amd", main: "index" },
+                { name: "aurelia-dependency-injection", location: package_path + "/bower_components/aurelia-dependency-injection/dist/amd", main: "index" },
+                { name: "aurelia-event-aggregator", location: package_path + "/bower_components/aurelia-event-aggregator/dist/amd", main: "index" },
+                { name: "aurelia-framework", location: package_path + "/bower_components/aurelia-framework/dist/amd", main: "index" },
+                { name: "aurelia-history", location: package_path + "/bower_components/aurelia-history/dist/amd", main: "index" },
+                { name: "aurelia-history-browser", location: package_path + "/bower_components/aurelia-history-browser/dist/amd", main: "index" },
+                { name: "aurelia-html-template-element", location: package_path + "/bower_components/aurelia-html-template-element/dist/amd", main: "index" },
+                { name: "aurelia-loader", location: package_path + "/bower_components/aurelia-loader/dist/amd", main: "index" },
+                { name: "aurelia-logging", location: package_path + "/bower_components/aurelia-logging/dist/amd", main: "index" },
+                { name: "aurelia-logging-console", location: package_path + "/bower_components/aurelia-logging-console/dist/amd", main: "index" },
+                { name: "aurelia-metadata", location: package_path + "/bower_components/aurelia-metadata/dist/amd", main: "index" },
+                { name: "aurelia-path", location: package_path + "/bower_components/aurelia-path/dist/amd", main: "index" },
+                { name: "aurelia-router", location: package_path + "/bower_components/aurelia-router/dist/amd", main: "index" },
+                { name: "aurelia-route-recognizer", location: package_path + "/bower_components/aurelia-route-recognizer/dist/amd", main: "index" },
+                { name: "aurelia-task-queue", location: package_path + "/bower_components/aurelia-task-queue/dist/amd", main: "index" },
+                { name: "aurelia-templating", location: package_path + "/bower_components/aurelia-templating/dist/amd", main: "index" },
+                { name: "aurelia-templating-binding", location: package_path + "/bower_components/aurelia-templating-binding/dist/amd", main: "index" },
+                { name: "aurelia-templating-resources", location: package_path + "/bower_components/aurelia-templating-resources/dist/amd", main: "index" },
+                { name: "aurelia-templating-router", location: package_path + "/bower_components/aurelia-templating-router/dist/amd", main: "index" },
+                { name: "core-js", location: package_path + "/bower_components/core-js", main: "index" },
+                { name: "q", location: package_path + "/bower_components/q", main: "q" },
+                { name: "webcomponents", location: package_path + "/bower_components/webcomponentsjs", main: "webcomponents" },
+                { name: "application", location: package_path + '/js' },
+                { name: "x", location: pathdir + "/x" },
+                { name: "nav", location: pathdir + "/nav" },
+                { name: "devkit", location: pathdir + "/devkit" }
+            ]
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://js.arcgis.com/3.12/"></script>
+</head>
 
-        paths: { pwcommon: location.pathname.replace(/\/[^/]+$/, "") + "/pwcommon" },
-
-        // The locationPath logic below may look confusing but all its doing is
-        // enabling us to load the api from a CDN and load local modules from the correct location.
-
-        packages: [
-            { name: "bootstrapper-amd", location: package_path + "/" + "bootstrapper-amd", main: "index" },
-            { name: "loader-amd", location: package_path + "/" + "loader-amd", main: "index" },
-            { name: "aurelia-binding", location: package_path + "/bower_components/aurelia-binding/dist/amd", main: "index" },
-            { name: "aurelia-dependency-injection", location: package_path + "/bower_components/aurelia-dependency-injection/dist/amd", main: "index" },
-            { name: "aurelia-event-aggregator", location: package_path + "/bower_components/aurelia-event-aggregator/dist/amd", main: "index" },
-            { name: "aurelia-framework", location: package_path + "/bower_components/aurelia-framework/dist/amd", main: "index" },
-            { name: "aurelia-history", location: package_path + "/bower_components/aurelia-history/dist/amd", main: "index" },
-            { name: "aurelia-history-browser", location: package_path + "/bower_components/aurelia-history-browser/dist/amd", main: "index" },
-            { name: "aurelia-html-template-element", location: package_path + "/bower_components/aurelia-html-template-element/dist/amd", main: "index" },
-            { name: "aurelia-loader", location: package_path + "/bower_components/aurelia-loader/dist/amd", main: "index" },
-            { name: "aurelia-logging", location: package_path + "/bower_components/aurelia-logging/dist/amd", main: "index" },
-            { name: "aurelia-logging-console", location: package_path + "/bower_components/aurelia-logging-console/dist/amd", main: "index" },
-            { name: "aurelia-metadata", location: package_path + "/bower_components/aurelia-metadata/dist/amd", main: "index" },
-            { name: "aurelia-path", location: package_path + "/bower_components/aurelia-path/dist/amd", main: "index" },
-            { name: "aurelia-router", location: package_path + "/bower_components/aurelia-router/dist/amd", main: "index" },
-            { name: "aurelia-route-recognizer", location: package_path + "/bower_components/aurelia-route-recognizer/dist/amd", main: "index" },
-            { name: "aurelia-task-queue", location: package_path + "/bower_components/aurelia-task-queue/dist/amd", main: "index" },
-            { name: "aurelia-templating", location: package_path + "/bower_components/aurelia-templating/dist/amd", main: "index" },
-            { name: "aurelia-templating-binding", location: package_path + "/bower_components/aurelia-templating-binding/dist/amd", main: "index" },
-            { name: "aurelia-templating-resources", location: package_path + "/bower_components/aurelia-templating-resources/dist/amd", main: "index" },
-            { name: "aurelia-templating-router", location: package_path + "/bower_components/aurelia-templating-router/dist/amd", main: "index" },
-            { name: "core-js", location: package_path + "/bower_components/core-js", main: "index" },
-            { name: "q", location: package_path + "/bower_components/q", main: "q" },
-            { name: "webcomponents", location: package_path + "/bower_components/webcomponentsjs", main: "webcomponents" },
-            { name: "application", location: package_path + '/js' },
-            { name: "x", location: pathdir + "/x" },
-            { name: "nav", location: pathdir + "/nav" },
-            { name: "devkit", location: pathdir + "/devkit" }
-        ]
-    };
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="http://js.arcgis.com/3.12/"></script>
-<script>
-    $(document).ready(function() {
-        alert("index up.");
-        require(["bootstrapper-amd"], function(bootstrap) { bootstrap.run(); });
-    });
-</script>
-
-<h1>TypeScript HTML App</h1>
-
-<div id="map"></div>
-<div ></div>
+<body aurelia-main>
+    <script>
+        require(["bootstrapper-amd"], function (bootstrap) { });
+    </script>
 </body>
 </html>

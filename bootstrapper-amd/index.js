@@ -1,4 +1,5 @@
-define(["require", "exports", "loader-amd", "aurelia-framework"], function (require, exports, lamd, auf) {
+// bootstrapper-amd
+define(["require", "exports", "loader-amd", "aurelia-framework", "aurelia-logging-console"], function (require, exports, lamd, auf, aulc) {
     var logger = auf.LogManager.getLogger("bootstrapper");
     function ready(global) {
         return new Promise(function (resolve, reject) {
@@ -96,6 +97,7 @@ define(["require", "exports", "loader-amd", "aurelia-framework"], function (requ
         return configureAurelia(aurelia).then(function () {
             aurelia.plugins.installBindingLanguage().installResources().installRouter().installEventAggregator();
             return aurelia.start().then(function (a) {
+                alert("aurelia started: " + a.started);
                 return a.setRoot(appModuleId, appHost);
             });
         }).catch(function (e) {
@@ -110,8 +112,9 @@ define(["require", "exports", "loader-amd", "aurelia-framework"], function (requ
     function run() {
         return ready(window).then(function (doc) {
             var mainHost = doc.querySelectorAll("[aurelia-main]"), appHost = doc.querySelectorAll("[aurelia-app]"), i, ii;
+            alert("mainHost count: " + mainHost.length + "\r\nappHost count: " + appHost.length);
             if (appHost.length && !mainHost.length && runningLocally()) {
-                auf.LogManager.addAppender(new auf.ConsoleAppender());
+                auf.LogManager.addAppender(new aulc.ConsoleAppender());
                 auf.LogManager.setLevel(4 /* debug */);
             }
             return loadPolyfills().then(function () {

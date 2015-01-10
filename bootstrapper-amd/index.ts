@@ -1,4 +1,6 @@
-﻿import corejs = require("core-js");
+﻿// bootstrapper-amd
+
+import corejs = require("core-js");
 import audi = require("aurelia-dependency-injection");
 import lamd = require("loader-amd");
 import auf = require("aurelia-framework");
@@ -137,7 +139,11 @@ function handleApp(appHost) {
             .installRouter()
             .installEventAggregator();
 
-        return aurelia.start().then(a => { return a.setRoot(appModuleId, appHost); });
+        return aurelia.start()
+            .then(a => {
+                alert("aurelia started: " + a.started);
+                return a.setRoot(appModuleId, appHost);
+            });
     }).catch(e => {
             setTimeout(() => { throw e; }, 0);
         });
@@ -154,8 +160,10 @@ function run() {
             appHost = doc.querySelectorAll("[aurelia-app]"),
             i, ii;
 
+        alert("mainHost count: " + mainHost.length + "\r\nappHost count: " + appHost.length);
+
         if (appHost.length && !mainHost.length && runningLocally()) {
-            auf.LogManager.addAppender(new auf.ConsoleAppender());
+            auf.LogManager.addAppender(new aulc.ConsoleAppender());
             auf.LogManager.setLevel(auf.LogManager.levels.debug);
         }
 

@@ -27,6 +27,7 @@
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="bootstrapper-amd\index.ts" />
     <TypeScriptCompile Include="loader-amd\index.ts" />
+    <TypeScriptCompile Include="main.ts" />
     <TypeScriptCompile Include="typings\aurelia-amd\aurelia-amd.d.ts" />
     <TypeScriptCompile Include="typings\aurelia\aurelia.d.ts" />
     <TypeScriptCompile Include="typings\core-js\core-js.d.ts" />

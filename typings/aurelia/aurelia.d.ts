@@ -3,10 +3,8 @@
 }
 
 declare module "aurelia-logging-console" {
-    class ConsoleAppender { }
+    class ConsoleAppender implements AuAppender { }
 }
-
-declare module "loader-amd" { }
 
 declare module "aurelia-dependency-injection" {
     interface HandlerCallback {
@@ -64,6 +62,8 @@ declare module "aurelia-http-client" {
     }
 }
 
+interface AuAppender { }
+
 declare module "aurelia-framework" {
     class Property {
         constructor(propertyName: string);
@@ -81,6 +81,7 @@ declare module "aurelia-framework" {
         plugins: AureliaPlugins;
         start(): Promise<Aurelia>;
         setRoot(appModuleId: string, appHost: any): any;
+        started: boolean;
     }
 
     module LogManager {
@@ -99,10 +100,6 @@ declare module "aurelia-framework" {
     class Logger {
         debug(message: string): void;
     }
-
-    interface AuAppender { }
-
-    class ConsoleAppender implements AuAppender { }
 }
 
 declare module "aurelia-logging" {
