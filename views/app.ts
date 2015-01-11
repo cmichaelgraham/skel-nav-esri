@@ -7,10 +7,10 @@ export class App {
         this.router.configure((config) => {
             config.title = "Aurelia VS/TS";
             config.map([
-                { route: ["", "views/welcome"], moduleId: "views/welcome", nav: true, title: "Welcome to VS/TS" },
-                { route: "views/flickr", moduleId: "views/flickr", nav: true },
-                { route: "views/esri-map", moduleId: "views/esri-map", nav: true },
-                { route: "views/child-router", moduleId: "views/child-router", nav: true, title: "Child Router" }
+                { route: ["", "welcome"], moduleId: "views/welcome", nav: true, title: "Welcome to VS/TS" },
+                { route: "flickr", moduleId: "views/flickr", nav: true },
+                { route: "esri-map", moduleId: "views/esri-map", nav: true },
+                { route: "child-router", moduleId: "views/child-router", nav: true, title: "Child Router" }
             ]);
         });
     }
