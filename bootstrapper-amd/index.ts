@@ -142,7 +142,7 @@ function handleApp(appHost) {
 
         return aurelia.start()
             .then(a => {
-                alert("aurelia started: " + a.started);
+                // alert("aurelia started: " + a.started);
                 return a.setRoot(appModuleId, appHost);
             });
     }).catch(e => {
@@ -161,7 +161,7 @@ function run() {
             appHost = doc.querySelectorAll("[aurelia-app]"),
             i, ii;
 
-        alert("mainHost count: " + mainHost.length + "\r\nappHost count: " + appHost.length);
+        // alert("mainHost count: " + mainHost.length + "\r\nappHost count: " + appHost.length);
 
         if (appHost.length && !mainHost.length && runningLocally()) {
             auf.LogManager.addAppender(new aulc.ConsoleAppender());

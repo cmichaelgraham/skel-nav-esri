@@ -7,6 +7,7 @@ define(["require", "exports", "aurelia-router"], function (require, exports, aur
                 config.map([
                     { route: ["", "views/welcome"], moduleId: "views/welcome", nav: true, title: "Welcome to VS/TS" },
                     { route: "views/flickr", moduleId: "views/flickr", nav: true },
+                    { route: "views/esri-map", moduleId: "views/esri-map", nav: true },
                     { route: "views/child-router", moduleId: "views/child-router", nav: true, title: "Child Router" }
                 ]);
             });

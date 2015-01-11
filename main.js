@@ -1,7 +1,7 @@
 define(["require", "exports"], function (require, exports) {
-    alert("hello from main :)");
+    //alert("hello from main :)");
     function configure(aurelia) {
-        alert("hello from main.configure :)");
+        //alert("hello from main.configure :)");
     }
     exports.configure = configure;
 });
