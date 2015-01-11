@@ -130,7 +130,8 @@ function handleMain(mainHost) {
 
 function handleApp(appHost) {
     var appModuleId = appHost.getAttribute('aurelia-app') || 'app',
-        aurelia = new auf.Aurelia();
+        loader = new lamd.LoaderAmd(),
+        aurelia = new auf.Aurelia(loader);
 
     return configureAurelia(aurelia).then(() => {
         aurelia.plugins

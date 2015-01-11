@@ -93,7 +93,7 @@ define(["require", "exports", "loader-amd", "aurelia-framework", "aurelia-loggin
         });
     }
     function handleApp(appHost) {
-        var appModuleId = appHost.getAttribute('aurelia-app') || 'app', aurelia = new auf.Aurelia();
+        var appModuleId = appHost.getAttribute('aurelia-app') || 'app', loader = new lamd.LoaderAmd(), aurelia = new auf.Aurelia(loader);
         return configureAurelia(aurelia).then(function () {
             aurelia.plugins.installBindingLanguage().installResources().installRouter().installEventAggregator();
             return aurelia.start().then(function (a) {

@@ -122,3 +122,21 @@ declare module "aurelia-logging" {
 
     class Logger { }
 }
+
+declare module "aurelia-metadata" {
+    class Origin {
+        constructor(moduleId: string, moduleMember: string);
+        static get(fn: Function): Origin;
+        static set(fn: Function, origin: Origin): Origin;
+    }
+}
+
+declare module "aurelia-loader" {
+    class Loader {
+        static createDefaultLoader(): Loader;
+        loadModule(moduleId: string): Promise<any>;
+        loadAllModules(moduleIds: Array<string>): Promise<any>;
+        loadTemplate(url: string): Promise<any>;
+        importTemplate(url: string): Promise<any>;
+    }
+}

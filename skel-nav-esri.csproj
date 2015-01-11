@@ -21,6 +21,11 @@
     <Content Include=".gitignore" />
     <Content Include="app.css" />
     <Content Include="index.html" />
+    <Content Include="views\app.html" />
+    <Content Include="views\child-router.html" />
+    <Content Include="views\flickr.html" />
+    <Content Include="views\nav-bar.html" />
+    <Content Include="views\welcome.html" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +38,11 @@
     <TypeScriptCompile Include="typings\core-js\core-js.d.ts" />
     <TypeScriptCompile Include="typings\dojo\dojo.d.ts" />
     <TypeScriptCompile Include="typings\es6-promise\es6-promise.d.ts" />
+    <TypeScriptCompile Include="views\app.ts" />
+    <TypeScriptCompile Include="views\child-router.ts" />
+    <TypeScriptCompile Include="views\flickr.ts" />
+    <TypeScriptCompile Include="views\nav-bar.ts" />
+    <TypeScriptCompile Include="views\welcome.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower.json" />

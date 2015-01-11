@@ -1,1 +1,1 @@
-{"version":3,"file":"app.js","sourceRoot":"","sources":["app.ts"],"names":[],"mappings":""}
+{"version":3,"file":"app.js","sourceRoot":"","sources":["app.ts"],"names":["configure"],"mappings":";IAEA,KAAK,CAAC,mBAAmB,CAAC,CAAC;IAE3B,SAAgB,SAAS,CAAC,OAAoB;QAC1CA,KAAKA,CAACA,6BAA6BA,CAACA,CAACA;IACzCA,CAACA;IAFe,iBAAS,GAAT,SAEf,CAAA"}

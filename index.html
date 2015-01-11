@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title>TypeScript HTML App</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
-    <link rel="stylesheet" href="http://js.arcgis.com/3.12/esri/css/esri.css">
+    <link rel="stylesheet" href="http://js.arcgis.com/3.12/esri/css/esri.css" />
 
     <script type="text/javascript">
         var pathdir = '';
@@ -49,7 +49,7 @@
             // The locationPath logic below may look confusing but all its doing is
             // enabling us to load the api from a CDN and load local modules from the correct location.
             packages: [
-                { name: "main", location: package_path + "/", main: "main" },
+                { name: "views", location: package_path + "/views" },
                 { name: "bootstrapper-amd", location: package_path + "/" + "bootstrapper-amd", main: "index" },
                 { name: "loader-amd", location: package_path + "/" + "loader-amd", main: "index" },
                 { name: "aurelia-binding", location: package_path + "/bower_components/aurelia-binding/dist/amd", main: "index" },
@@ -59,6 +59,7 @@
                 { name: "aurelia-history", location: package_path + "/bower_components/aurelia-history/dist/amd", main: "index" },
                 { name: "aurelia-history-browser", location: package_path + "/bower_components/aurelia-history-browser/dist/amd", main: "index" },
                 { name: "aurelia-html-template-element", location: package_path + "/bower_components/aurelia-html-template-element/dist/amd", main: "index" },
+                { name: "aurelia-http-client", location: package_path + "/bower_components/aurelia-http-client/dist/amd", main: "index" },
                 { name: "aurelia-loader", location: package_path + "/bower_components/aurelia-loader/dist/amd", main: "index" },
                 { name: "aurelia-logging", location: package_path + "/bower_components/aurelia-logging/dist/amd", main: "index" },
                 { name: "aurelia-logging-console", location: package_path + "/bower_components/aurelia-logging-console/dist/amd", main: "index" },
@@ -85,7 +86,7 @@
     <script src="http://js.arcgis.com/3.12/"></script>
 </head>
 
-<body aurelia-main>
+<body aurelia-app="views/app">
     <script>
         require(["bootstrapper-amd"], function (bootstrap) { });
     </script>
