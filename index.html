@@ -54,8 +54,9 @@
             // enabling us to load the api from a CDN and load local modules from the correct location.
             packages: [
                 { name: "views", location: package_path + "/views" },
-                { name: "bootstrapper-amd", location: package_path + "/" + "bootstrapper-amd", main: "index" },
-                { name: "loader-amd", location: package_path + "/" + "loader-amd", main: "index" },
+                { name: "aurelia-bootstrapper", location: package_path + "/bower_components/aurelia-bootstrapper/dist/amd", main: "index" },
+                { name: "aurelia-loader", location: package_path + "/bower_components/aurelia-loader/dist/amd", main: "index" },
+                { name: "aurelia-loader-systemjs", location: package_path + "/bower_components/aurelia-loader-systemjs/dist/amd", main: "index" },
                 { name: "aurelia-binding", location: package_path + "/bower_components/aurelia-binding/dist/amd", main: "index" },
                 { name: "aurelia-dependency-injection", location: package_path + "/bower_components/aurelia-dependency-injection/dist/amd", main: "index" },
                 { name: "aurelia-event-aggregator", location: package_path + "/bower_components/aurelia-event-aggregator/dist/amd", main: "index" },
@@ -92,7 +93,7 @@
 
 <body aurelia-app="views/app">
     <script>
-        require(["bootstrapper-amd"], function (bootstrap) { });
+        require(["core-js", "aurelia-bootstrapper"], function (corejs, bootstrapper) { });
     </script>
 </body>
 </html>
